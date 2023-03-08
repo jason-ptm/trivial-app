@@ -1,38 +1,450 @@
+/* general styles */
 .App {
-  text-align: center;
+  min-height: 300px;
+  height: 100vh;
 }
 
-.App-logo {
-  height: 40vmin;
+.container {
+  width: 100%;
+  height: 100%;
+  min-height: 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn {
+  padding: 20px 25px;
+  font-size: 18px;
+  border-radius: 30px;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  background-color: #00000021;
+  letter-spacing: .5mm;
+  font-weight: 300;
+  position: relative;
+  z-index: 3000;
+  margin: 10px 0;
+  text-decoration: none;
+  color: #bbb;
+}
+
+
+
+
+
+/* start Home */
+.Home {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.Home .title {
+  font-family: 'Prompt', sans-serif;
+  font-weight: 900;
+  font-size: 70px !important;
+  font-style: italic;
+  letter-spacing: .1mm;
+  font-size: 40px;
+  text-align: center;
+  margin-bottom: 20px;
+  color: #fff;
+}
+
+#how-works {
+  padding: 15px 20px;
+  font-size: 14px;
+  border: none !important;
+  margin: 5px;
+  background-color: transparent;
+  color: #999;
+  transition: all .6s;
+}
+
+#how-works:hover {
+  color: #ddd;
+  transform: scale(1.2) !important;
+}
+
+.lang-btn {
+  position: absolute;
+  display: flex;
+  justify-content: space-between;
+  top: 10px;
+  left: 10px;
+  border-radius: 10px;
+  background-color: #ddd;
+  width: 105px;
+  height: 50px;
+  overflow: hidden;
+}
+
+.lang-btn .img {
+  display: block;
+  width: 50px;
+  height: 50px;
+  padding: 6px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all .4s;
+}
+
+.lang-btn .img.select {
+  box-shadow: 0px 0px 12px #000;
+  background-color: #bbb;
+}
+
+.lang-btn .img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: all .4s
+}
+
+.lang-btn .img.select img {
+  transform: scale(1.1);
+}
+
+.Home .podium-cont{
+  position: absolute;
+  height: min-content;
+  top: 0;
+  right: 0;
+  height: 80%;
+  min-height: 400px;
+}
+
+/* end home */
+
+
+
+
+
+/* start progressBar */
+.ProgressBar {
+  position: absolute;
+  width: 100vw;
+}
+
+.ProgressBar .bar {
+  width: 100%;
+  height: 3px;
+  background: #00F260;
+  background: -webkit-linear-gradient(to right, #0575E6, #00F260);
+  background: linear-gradient(to right, #0575E6, #00F260);
+}
+
+.ProgressBar .progress {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100%;
+  background-color: #666;
+}
+
+.ProgressBar .timer {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 20px;
+  right: 30px;
+  border-radius: 100%;
+  height: 60px;
+  width: 60px;
+  background: #00F260;
+}
+
+.timer .time {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 56px;
+  height: 56px;
+  color: #ddd;
+  font-size: 25px;
+  border-radius: 100%;
+  background-color: #1f1b36;
+}
+
+/* end progressBar */
+
+
+
+
+
+/* Start Questions container */
+.Questions {
+  width: 100%;
+  height: 100%;
+}
+
+.Questions .form {
+  width: 100%;
+  height: 100%;
+  padding: 20px 30px;
+  display: flex;
+  justify-content: center;
+}
+
+.Questions .btn {
+  width: fit-content;
+  position: absolute;
+  bottom: 20px;
+}
+
+.Questions .title {
+  width: 100%;
+  font-size: 40px;
+  color: #aaa;
+}
+
+.Questions .background {
+  width: 100%;
+  height: 100%;
+  position: absolute;
   pointer-events: none;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.Questions .background.correct {
+  background-color: #2ECC71C5;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.Questions .background.incorrect {
+  background-color: #E74C3CC5;
+}
+
+.Questions .response-advice {
+  position: absolute;
+  background-color: #F39C12;
+  padding: 15px;
+  border-radius: 14px;
+  bottom: 120px;
+}
+
+.Questions .response-advice i {
+  margin-right: 8px;
+}
+
+.Questions .podium-cont {
+  position: absolute;
+  height: 300px;
+  right: 0;
+  top: calc(50% - 150px);
+  z-index: 7000;
+}
+
+/* End Questions container */
+
+
+
+
+
+/* Start Question */
+.Question {
+  width: 100%;
+  height: 100%;
+  max-width: 1200px;
+  margin: 40px 0 30px 0;
+  padding: 0 40px;
+  color: #ddddddc5;
+  font-size: 28px;
+  max-height: 80vh;
+  overflow-y: auto;
+  letter-spacing: .2mm;
+  transition: all .3s;
+}
+
+.Question .question {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  align-items: center;
+}
+
+.Question .number {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 35px;
+  height: 35px;
+  border-radius: 100%;
+  background: #7ec544;
+  font-size: 20px;
+  color: #000;
+}
+
+.Question .options {
+  padding-top: 30px;
   display: flex;
   flex-direction: column;
+  gap: 8px;
+}
+
+.Question .option {
+  display: flex;
+  flex-direction: row;
   align-items: center;
+  gap: 8px;
+  list-style: none;
+  cursor: pointer;
+  font-size: 23px;
+  color: #ccc;
+  padding: 14px;
+  border: 3px solid #0005;
+  border-radius: 12px;
+  overflow: visible;
+  transition: background .5s, transform .2s, color .5s, padding .4s, border .5s;
+
+}
+
+.Question .icon {
+  display: flex;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-items: center;
+  height: 28px;
+  min-width: 28px;
+  font-size: 18px;
+  border-radius: 12px;
+  border: 3px solid #ccc;
+  color: #ccc;
 }
 
-.App-link {
-  color: #61dafb;
+.Question .option:hover {
+  transform: scale(1.02);
+  background-color: #fff1;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.Question .option.select {
+  color: #ddd;
+  transform: scale(1.03);
+  background-color: #828096b3;
+}
+
+.option.select .icon {
+  border-color: #ddd;
+  color: #ddd;
+}
+
+.Question .option.select.correct {
+  background-color: #2ecc7053;
+}
+
+.Question .option.select.incorrect {
+  background-color: #e74d3c30;
+}
+
+.Question .option.correct {
+  border-color: #2ECC71;
+  color: #2ECC71;
+}
+
+.Question .option.correct .icon {
+  color: #2ECC71;
+  border-color: #2ECC71;
+}
+
+.Question .option.incorrect {
+  border-color: #E74C3C;
+  color: #E74C3C;
+}
+
+.Question .option.incorrect .icon {
+  color: #E74C3C;
+  border-color: #E74C3C;
+}
+
+/* start scrollbar */
+
+/* Firefox */
+.Question {
+  scrollbar-width: auto;
+  scrollbar-color: #b3b3b3 #0000004a;
+}
+
+/* Chrome, Edge, and Safari */
+.Question::-webkit-scrollbar {
+  width: 10px;
+}
+
+.Question::-webkit-scrollbar-track {
+  background: #0000004a;
+}
+
+.Question::-webkit-scrollbar-thumb {
+  background-color: #b3b3b3;
+  border-radius: 28px;
+  border: 3px solid #0000004a;
+}
+
+@media screen and (max-width: 600px) {
+  .Question {
+    padding: 10px;
   }
-  to {
-    transform: rotate(360deg);
+
+  .timer {
+    top: 10px !important;
   }
 }
+
+@media screen and (max-width: 350px) {
+  .Questions .form {
+    padding: 10px;
+  }
+
+  .Question .option {
+    padding: 12px;
+  }
+}
+
+/* End Question */
+
+
+
+
+
+/* Start SideBar */
+.SideBar {
+  position: relative;
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: 300px;
+  z-index: 5000;
+  border-radius: 10px 0 10px 10px;
+  overflow: hidden;
+}
+
+.SideBar .background {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 300px;
+}
+
+.SideBar .icon {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50px;
+  height: 50px;
+  top: 15px;
+  right: 15px;
+  border-radius: 100%;
+  cursor: pointer;
+  transition: all .5s;
+}
+
+.SideBar .icon i {
+  position: absolute;
+}
+
+/* end SideBar */
