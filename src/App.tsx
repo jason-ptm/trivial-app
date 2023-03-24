@@ -1,32 +1,43 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import './App.css'
+import React, { Suspense } from 'react'
+import { AnimatePresence } from 'framer-motion'
+import { Provider } from 'react-redux'
+import { Navigate, Route, Routes, useLocation } from 'react-router-dom'
+import './App.scss'
+import store from './redux/store'
+import { lazy } from 'react'
+
+// components
+const Home = lazy(() => import('./pages/Home/Home'))
+const QuestionsContainer = lazy(
+  () => import('./pages/QuestionsContainer/QuestionsContainer')
+)
+import { Loading } from './pages/Loading'
+import { RoutesTypes } from './model'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const location = useLocation()
+
+  // https://www.youtube.com/watch?v=p9PAmqpCWgA&ab_channel=GentlemanProgramming
+  // 2:07:03
+  // www.youtube.com/watch?v=m-w902RrJXA&list=PL42UNLc8e48SQRBqbOdPz4t3YHicEf5xs&index=3&ab_channel=GentlemanProgramming
 
   return (
     <div className="App">
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src="/vite.svg" className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://reactjs.org" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <Suspense fallback={<Loading />}>
+        <Provider store={store}>
+          <AnimatePresence mode="wait">
+            <Routes location={location} key={location.pathname}>
+              <Route path="/" element={<Navigate to={RoutesTypes.home} />} />
+              <Route path={RoutesTypes.home} element={<Home />} />
+              <Route
+                path={RoutesTypes.questions}
+                element={<QuestionsContainer />}
+              />
+              <Route path="*" element={<Navigate to="/" />} />
+            </Routes>
+          </AnimatePresence>
+        </Provider>
+      </Suspense>
     </div>
   )
 }

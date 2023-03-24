@@ -1,0 +1,14 @@
+.button.btn {
+  width: fit-content;
+  position: absolute;
+  bottom: 20px;
+  transition: all 0.5s;
+}
+.button.btn:hover {
+  transform: scale(1.1) !important;
+  background-color: #1f1b3681;
+}
+.advice {
+  position: absolute;
+  bottom: 110px;
+}
